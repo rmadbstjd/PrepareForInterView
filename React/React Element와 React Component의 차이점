@@ -1,0 +1,11 @@
+Element는 type과 props를 갖는 불변 객체입니다.
+
+type의 종류에 따라 DOM 엘레먼트, 컴포넌트 엘레먼트로 나뉘게 됩니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccd36756-b23c-4cca-82ea-ff8bf6411e46/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a37572f2-4d62-4ef5-a1e5-3a149a9258b4/Untitled.png)
+
+컴포넌트는 props를 받아 엘리먼트를 반환하는 함수 혹은 클래스입니다.
+
+또한 컴포넌트는 상태 값을 가질 수 있습니다.

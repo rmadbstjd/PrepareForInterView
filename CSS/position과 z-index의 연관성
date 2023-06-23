@@ -1,0 +1,57 @@
+일단 z-index는 position 속성이 relative거나 absolute여야 동작합니다.
+
+먼저 position이 static인 태그들이 나오는 순서대로 쌓이고, 그 위에 position이 relative거나 absolute인 태그들이 순서대로 쌓입니다.
+
+z-index의 규칙은 다음과 같습니다.
+
+1. position 속성이 없는 요소들은 나오는 순서대로 쌓입니다.
+2. position 속성이 있는 요소들은 없는 요소보다 위에 순서대로 쌓입니다.
+3. position 속성에 z-index까지 있다면 z-index가 큰 요소가 위에 쌓입니다.
+4. 하지만 z-index가 다른 요소보다 아무리 크더라도 부모 요소의 z-index가 다른 요소보다 작다면 다른 요소 위에 쌓이지 않습니다.
+
+```
+<div id="div1">
+<h1>Division Element #1</h1>
+<code>position: relative;<br/>
+z-index: 5;</code>
+</div>
+
+<div id="div2">
+  <h1>Division Element #2</h1>
+  <code>position: relative;<br/>
+  z-index: 2;</code>
+</div>
+
+<div id="div3">
+
+  <div id="div4">
+    <h1>Division Element #4</h1>
+    <code>position: relative;<br/>
+    z-index: 6;</code>
+  </div>
+
+  <h1>Division Element #3</h1>
+  <code>position: absolute;<br/>
+  z-index: 4;</code>
+
+  <div id="div5">
+    <h1>Division Element #5</h1>
+    <code>position: relative;<br/>
+    z-index: -1;</code>
+  </div>
+
+  <div id="div6">
+    <h1>Division Element #6</h1>
+    <code>position: absolute;</code>
+  </div>
+</div>
+
+<div id="div7">
+<h1>Division Element#7</h1>
+<code>position: static</code>
+</div>
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/189ccdb0-2222-4a82-ad96-006461570ac7/Untitled.png)
+
+- Div 4가 Div1 보다 z-index가 더 높지만, Div4의 부모 요소인 Div3의 z-index가 Div1의 z-index보다 낮으므로, Div4가 Div1 위에 쌓이지 않는다.

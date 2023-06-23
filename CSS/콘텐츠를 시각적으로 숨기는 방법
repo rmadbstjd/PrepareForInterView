@@ -1,0 +1,7 @@
+/*visibility : hidden 속성,
+
+display : none 속성,
+
+width, height : 0,
+
+position : absolute, top : -9999px;*/

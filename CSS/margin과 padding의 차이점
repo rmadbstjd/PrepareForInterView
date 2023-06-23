@@ -1,0 +1,19 @@
+margin과 padding의 차이점을 설명드리기 전에 먼저 box model에 대해 설명드리자면
+
+box model은 실질적인 내용이 담긴 content,
+
+테두리와 content사이의 간격인 padding,
+
+테두리와 이웃하는 요소와의 간격인 margin으로 구성됐습니다.
+
+따라서 padding은 content와 border 사이의 여백이며,
+
+margin은 border와 그 밖의 인접한 요소와의 거리를 두기 위한 영역입니다.
+
+이 때 content 영역에 배경색이나 배경 이미지를 가질 때 padding 영역에도 영향을 미치므로
+
+content 영역에 padding 영역이 포함된다고 볼 수 있습니다.
+
+margin은  Object와 화면과의 여백(외부 여백)이고,
+
+padding은 Object 내의 내부 여백이다.

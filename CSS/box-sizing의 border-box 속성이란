@@ -1,0 +1,11 @@
+box-sizing은 박스의 크기를 어떤 것을 기준으로 할지 정하는 속성입니다.
+
+쉽게 말해 너비와 높이를 계산할 때 padding과 border를 포함할지를 결정하는 속성입니다.
+
+예를 들어 width :  500px이고, border가 50px이라면
+
+기본 속성인 content-box의 경우 박스의 전체 너비는 500px + 50px + 50px = 600px이 됩니다.
+
+border-box 속성은 border의 크기나 padding의 크기를 포함한 박스의 전체 너비를 500px로 합니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fb45d79e-d484-4736-99b4-7039586be926/Untitled.png)

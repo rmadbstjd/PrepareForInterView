@@ -1,0 +1,57 @@
+ttribute란 HTML Element의 추가적인 정보를 전달하며,
+
+태그 내에서 key와 value 형태로 작성됩니다.
+
+예를 들어 <div class =”label”/>가 있으면
+
+div 태그는 label이라는 값을 지닌 class 어트리뷰트를 갖고 있습니다.
+
+Property란 DOM Tree 내부에서 atrribute를 가르킬 때 쓰입니다.
+
+그렇다면 Attribute와 Property와 어떤 차이점이 있을까요?
+
+위치적인 관점에서 보면 Attribute는 HTML 문서 안에 존재하며,
+
+Property는 DOM Tree 안에 존재합니다.
+
+Property의 값을 변경하면 DOM 객체만 변경되고, HTML은 업데이트되지 않아 Attribute의 값은 그대로이다.
+
+왜 업데이트가 되지 않을까요?
+
+DOM은 Javascript 모델이므로 굳이 HTML 속성을 계속 업데이트할 필요가 없고 실제로 리소스 낭비가 될 수 있기 때문에 그렇게 설계되었다고 알고 있습니다.
+
+그럼 Attribute의 값을 변경하려면 어떻게 해야 할까요?
+
+DOM과 HTML 둘다 특정 속성의 값을 변경하고 싶으면 setAttribute() 메소드를 통해 업데이트를 하면 됩니다.
+
+1.Attribute
+
+<div class="label">리스트</div>
+
+HTML element의 추가적인 정보를 전달한다. 태그 내에서 이름="값" 쌍으로 작성된다.
+
+div 태그는 "label" 이란 값을 지닌 class 어트리뷰트를 가지고 있다.
+
+2. P\***\*roperty\*\***
+
+HTML DOM tree 내부에서 attribute를 가리킬 때 쓰인다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e620858-dc5e-4e3f-b14c-5120c353464a/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/47333039-3452-46db-94c2-d427717bc60f/Untitled.png)
+
+(예시의) 해당 엘리먼트는 HTML DOM tree에서 이름이 className이고 값이 "label" 인 property를 가진다.
+
+3. \***\*attribute와 property의 차이는 무엇인가?\*\***
+
+위치적 관점에서 본다면,
+
+**attribute는 HTML 문서 안에 있고**, **property는 HTML DOM tree 안에 있다**.
+
+즉, **attribute의 값은 변하지 않고**, **property는** (자바스크립트로 DOM을 조작했을 때) **값이 변할 수 있다**.
+
+직접 DOM을 조작하며 결과를 확인해보자.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/836dc034-fdb0-4d38-833c-577fd9b24ef0/Untitled.png)
+
+**attribute의 값은 변하지 않고**, **property의** **값은 변할 수 있다**.

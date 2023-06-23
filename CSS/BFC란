@@ -1,0 +1,17 @@
+BFC는 Blocking Formatting Context의 약자로서, 보통 마진 병합현상을 없애거나
+float된 요소를 포함할 때 사용됩니다. BFC의 생성 조건은 display : inline-block,
+혹은 flex인 경우, float이 none이 아니면서 clear되지 않은 경우, overflow :
+visible이 아닌 경우 등등이 있다. 예를 들어 어느 한 요소가 float : left 속성을
+사용하는 경우, 부모 요소는 float:left 속성을 가진 자식 요소를 감싸지 못합니다.
+이럴 때 부모 요소에 BFC를 주기 위해 overflow : hidden, overflow : auto, float
+:left, display :inline-block 속성(width가 100%가 아니어도 되는 경우)을 줍니다.
+각각의 특성이 있기 때문에 대부분 display : inline-block 을 줍니다. 또한 BFC를
+이용해서 마진 병합 현상을 막을 수 있습니다. 부모와 자식 사이에 발생하는 마진
+병합 현상은 부모 요소에 bfc를 주면 되고, 만약 형제 사이 요소간 발생하는 마진
+병합 현상을 막고 싶다면 형제 요소 사이에 bfc를 넣으면 된다.
+
+<div class="container">
+  <p>Sibling 1</p>
+  <div class="bfc"></div>
+  <p>Sibling 2</p>
+</div>

@@ -1,0 +1,25 @@
+1.스크립트의 일반적인 실행
+
+스크립트를 가져와 실행하기 위해 HTML 파싱을 일시 중지하고, 자바스크립트 코드를 읽은 후 실행한 후에 HTML 파싱이 재개됩니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/502e11f4-9b61-4f9c-86fc-dfe53ddb0a4c/Untitled.png)
+
+2. async 속성이 추가된 스크립트의 실행
+
+브라우저에 스크립트 파일이 비동기적으로 실행될수 있음을 나타내기 위해 사용할 수 있다.
+
+즉, HTML 파서는 스크립트 태그에 도달한 시점에 파싱을 멈출 필요가 없다.
+
+HTML 파싱과 병행하여 스크립트를 받아온 후, 스크립트가 준비되면 즉시 실행이 가능하다.
+
+그러므로 스크립트의 실행 순서가 다운로드 완료 시점에 따라 결정되므로 실행 순서가 중요한 스크립트들에는 async를 주의해서 사용해야 한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3591e24b-2af1-46bf-be38-8afcc11d350b/Untitled.png)
+
+3. defer 속성이 추가된 스크립트의 실행
+
+async 속성과 다르게 defer 속성은 HTML 파싱이 완전히 완료 되면 스크립트를 실행한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5aa7aa4a-55d4-4499-a262-7df28f9f185c/Untitled.png)
+
+즉, 의존성을 갖고 있는 스크립트 파일이라면 async 속성 대신 defer 속성을 사용해야한다.
