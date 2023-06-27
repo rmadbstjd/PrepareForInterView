@@ -1,0 +1,176 @@
+/*
+1. 호이스팅이란
+
+호이스팅이란 변수 선언/ 함수 선언이 해당 스코프의 최상단으로 끌어올려진것 같은 현상을 말한다.
+
+자바스크립트 엔진이 실행 시점에서 특정한 변수나 함수 만을 콕 찝어 상단으로 끌어올리는 것은 아니고, 단지 실행 전에 어떠한 과정을 거쳐 변수와 함수에 대한 전체적인 정보를 미리 알고 있을 뿐이다.
+
+어떠한 과정이란 무엇일까?
+
+우선 JS는 코드를 실행하기 전에 컴파일 과정을 거친다. 컴파일이란 사람이 이해하는 고수준 언어로 이루어진 코드를 컴퓨터가 이해하는 저수준 언어로 변환하는 과정이다.
+
+컴파일 단계에서 코드 실행 전, 함수와 변수 선언을 스캔하고, 모든 선언들을 렉시컬 환경이라 불리는 자바스크립트 데이터 구조 내의 메모리에 추가된다.
+
+렉시컬 환경이란?
+
+렉시컬 환경은 코드 block, function, script를 실행하기 앞서 생성되는 특별한 객체로,
+
+실행할 스코프 범위 안에 있는 **변수와 함수를 프로퍼티로 정의하는 객체**이다.
+
+즉, 우리가 소스 코드를 실행하면서 참조가 필요한 변수의 값을 렉시컬 환경이라는 객체에서
+
+식별자 이름을 키로 찾는다고 보면 된다.
+
+그렇지만 함수/변수에 상관없이 늘 동일한 규칙이 적용되는 것은 아니다.
+
+2.  호이스팅 규칙
+
+호이스팅은 크게 함수 호이스팅과 변수 호이스팅으로 나뉜다. 그리고 규칙을 요약하면 다음과 같이 나뉜다.
+
+1) 선언된 함수는 상단에서 참조, 호출이 가능하다.
+
+2) 선언된 var는 상단에서 참조, 할당이 가능하다.
+
+3) 선언된 let, const는 상단에서 참조, 할당이 불가능하다.
+
+3. 변수 호이스팅
+
+a를 선언하지 않은 채 출력하면 어떻게 될까?
+
+undefined를 출력? 에러가 발생? 
+
+정답은 ReferenceError가 발생한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6916796e-8d7e-465f-ab13-7aeae3b210d0/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a412ce07-7a71-432a-82b6-239f97222c01/Untitled.png)
+
+그렇다면 a를 출력하는 코드 아래에 변수 a를 선언하면 어떻게 될까?
+
+이번에도 에러가 발생할까?
+
+이번에는 undefined가 출력 되고,  에러가 발생하지 않는다.
+
+var a를 상단으로 호이스팅했기 때문에 변수 선언 전에 console.log(a)를 출력해도
+
+에러가 발생하지 않고 undefined가 출력된다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bfff8888-17bf-42f6-aad2-9647b4f6be2d/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de8b563c-3dc5-49b6-9eb8-16ee5f748426/Untitled.png)
+
+모든 선언은(function, var, let, const, class) Javascript에서 호이스팅되며, 
+
+var 선언은 undefined로 초기화되지만 let 및 const 선언은 초기화되지않은
+
+Temporal Dead Zone 상태로 유지된다.
+
+자바스크립트의 변수 생성 단계
+
+자바스크립트는 총 3단계에 걸쳐 변수를 생성한다.
+
+1) 선언 : 스코프와 변수 객체가 생성되고, 스코프가 변수 객체를 참조한다. 초기화 전까지는 TDZ 상태이다.
+
+2) 초기화 : 변수 객체 값을 위한 공간을 메모리에 할당한다. 이 때 할당되는 값은 undefined다.
+
+ex) value = undefined
+
+3) 할당 :  undefined로 초기화된  값에 할당한다. ex) value =1020
+
+렉시컬 환경
+
+1) 선언
+
+lexcialEnvironment = {
+
+value : <uninitialized>
+
+}
+
+2) 초기화
+
+lexicalEnvironment = {
+
+value : undefined
+
+}
+
+3) 할당
+
+lexicalEnvironment = {
+
+value : 10
+
+}
+
+var, let, const
+
+var는 선언과 동시에 초기화가 이루어진다. 즉, 선언과 동시에 undefined가 할당된다.
+
+그러나 let과 const는 다르다. 선언만 될 뿐, 초기화가 이루어지지않는 메모리 할당이 아직 되지 않은
+
+TDZ에 들억가게 된다.
+
+모든 선언(funciton, var, let, const, class)은 Javascript에서 호이스팅되며, var 선언은 undefined로 초기화되지만 let 및 const 선언은 초기화되지않은 상태로 유지된다.
+
+즉, var은 선언과 함께 undefined로 초기화되어 메모리에 저장되지만,
+
+let과 const는 초기화되지 않은 상태로 선언만 되기 때문이다.
+
+초기화되지 않으면 변수를 참조할 수 없다. 따라서 참조 에러가 발생하는 것이다.
+
+let과 const가 호이스팅이 되기 때문에 Reference Error를 일으키는 것이다.
+
+예시)
+
+let a = 1;
+{
+    console.log(a); //  1
+}
+
+let a = 1;
+{
+
+    let a = 2;
+    console.log(a); // 2
+}
+
+호이스팅이 일어나지 않는다면 아래의 예시에서는 에러가 발생하지 않고 1이 출력될 것이다.
+
+선언이 호이스팅이 됐기 때문에 블록 스코프에서 a를 찾을 수 없는 것이다.
+
+let a = 1;
+{
+    console.log(a); // `Uncaught ReferenceError: Cannot access 'a' before initializatio`
+
+    let a = 2;
+}
+
+undefined vs ReferenceError
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c98367d2-2bbb-46dd-a6e2-b76013207f5b/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5997e35b-b986-4ee8-8aeb-bb385b8deb8e/Untitled.png)
+
+4. 함수 호이스팅
+
+함수 선언식은 호이스팅이 된다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9ff079ce-f15d-45af-9e50-3a3a131a44a2/Untitled.png)
+
+함수 표현식은 호이스팅 되지 않는다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/31c65103-c5b6-40e9-802f-667e011cbb4e/Untitled.png)
+
+함수 표현식과 함수 선언식을 조합하여도 호이스팅 되지 않는다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3cd3291-baec-4e8a-a9cd-dd8cca81bc43/Untitled.png)
+
+함수 표현식처럼 클래스 표현식은 호이스팅 되지 않는다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8fa343ae-3742-4718-881d-32d1cdc32ff9/Untitled.png)
+
+결국, 호이스팅은 함수나 변수를 어디에 선언하였든지, 신경 쓰지 않고 필요한 곳에서 자유롭게 사용하기 위해 만들어진 기능이다. 그러나 이 기능은 때때로 의도치 않은 버그를 발생시키기도 한다.
+
+따라서 호이스팅을 의도적으로 사용하는 것이 아니라면 호이스팅이 되지 않거나, TDZ 으로 초기화되는 let, const, 함수 표현식을 사용하는 것이 좋을 수 있다.
+*/
