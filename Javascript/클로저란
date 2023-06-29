@@ -1,0 +1,14 @@
+중첩 함수의 내부 함수가 이미 생명 주기를 마감한 외부 함수의 변수에 접근할수 있다면 
+
+이때  내부 함수를 클로저라고 합니다.
+
+자바스크립트에서 함수는 태어나면 본인의 내부 슬롯 안에 상위 스코프의 참조를 저장합니다.
+
+그 후 외부 함수의 생명 주기가 마감되면서 실행 컨텍스트에서 제거되었지만 내부 함수는 본인의 내부 슬롯에 상위 스코프의 참조를 유지하고 있기 때문에 이를 참조해서 생명 주기가 끝난 외부 함수의 변수에 접근이 가능합니다.
+
+클로저를 사용하면 변수를 은닉화하여 의도치 않게 변경되는 것을 막을 수 있습니다.
+
+예시 코드
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ebe47013-2e95-43f1-9ea9-8389a81e760f/Untitled.png)
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/638c2f7a-bd54-4c46-93d3-a16bf8097ecd/Untitled.png)
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/099d345b-c947-4c52-841f-eb32609625c1/Untitled.png)
